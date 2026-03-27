@@ -26,7 +26,28 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    // MaterialApp はFlutterの基本アプリ構造
+    // テーマ・ルーティング・タイトルなどを管理する
+    return MaterialApp(
+      // アプリ全体のデザインテーマを設定
+      theme: ThemeData(
+        // アプリのメインカラー
+        // ボタンやAppBarなどで使われる
+        primaryColor: Colors.blue[400],
+
+        // Scaffold（画面のベース）の背景色
+        scaffoldBackgroundColor: Colors.grey[200],
+
+        // AppBar（上部ナビゲーションバー）のデザイン設定
+        appBarTheme: AppBarTheme(
+
+          // AppBarの背景色
+          backgroundColor: Colors.blue[400],
+
+          // AppBarの文字色やアイコン色
+          foregroundColor: Colors.white,
+        ),
+      ),
 
       /// ---------------------------
       /// Home画面（最初に表示する画面）
