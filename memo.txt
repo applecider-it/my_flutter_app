@@ -1,0 +1,108 @@
+
+cd ~/workspace/github/my_flutter_app/src
+
+-----------------------------------
+
+セットアップ
+
+flutter doctor
+
+flutterがなかったら
+
+cd
+
+mkdir development
+
+cd development
+
+git clone https://github.com/flutter/flutter.git -b stable
+
+
+
+.zshrcに追記
+
+export PATH="$PATH:$HOME/development/flutter/bin"
+
+
+----
+
+flutter doctor
+
+で必要な作業
+
+
+iOS
+
+xcodeのインストール
+
+gem install cocoapods
+
+
+Android
+
+Android Studio
+    Tools -> SDK Maneger -> SDK Toolsタブ -> Android SDK Command-line Tools を有効化
+
+flutter doctor --android-licenses
+    y連打
+
+
+----
+
+クリアした後
+
+cd ~/workspace/github/my_flutter_app/src
+
+
+web
+
+flutter pub get
+flutter run
+
+chromeなんとかかんとかというのが出たら
+1
+
+
+
+android
+
+Android Studio
+    プロジェクト選択 -> ... -> Device選択 -> 起動
+
+flutter devices
+    エミュレータ確認
+
+flutter run
+
+r
+ホットリロード
+R
+ホットリスタート
+
+----
+
+Android Studioから直接編集
+
+Android Studio
+    Setting -> Plugin
+        インストール
+        Dart
+            こっちを先にインストールしないと、変な状態になることがある
+        Flutter
+
+flutter precache
+    dart-sdkなどのツールをインストールしている
+
+Setting -> Language -> Dart
+
+Dart SDK Path
+[user home]/development/flutter/bin/cache/dart-sdk
+
+
+上にあるドロップダウンで
+Androidエミュレータを選択
+
+Debugモードじゃないと、ホットリロードは効かない
+
+-----------------------------------
+
