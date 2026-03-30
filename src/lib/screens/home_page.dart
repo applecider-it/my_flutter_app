@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'todo_page.dart';
 import 'counter_page.dart';
+import 'development_page.dart';
 
 /// ===============================
 /// トップ画面（HomePage）
@@ -67,6 +68,26 @@ class HomePage extends StatelessWidget {
                 );
               },
               child: const Text("Counterページへ"),
+            ),
+
+            /// ---------------------------
+            /// ボタン間の余白
+            /// ---------------------------
+            const SizedBox(height: 20),
+
+            /// ---------------------------
+            /// 開発者向けページへの遷移ボタン
+            /// ---------------------------
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const DevelopmentPage(), // DevelopmentPageを表示
+                  ),
+                );
+              },
+              child: const Text("Developmentページへ"),
             ),
           ],
         ),

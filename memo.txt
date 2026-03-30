@@ -3,6 +3,22 @@ cd ~/workspace/github/my_flutter_app/src
 
 -----------------------------------
 
+起動
+
+下記のセットアップが済んでいる場合は、普通にAndroid Studioで
+
+-----------------------------------
+
+node
+
+cd ~/workspace/github/my_flutter_app/node
+
+node index.js
+
+
+
+-----------------------------------
+
 セットアップ
 
 flutter doctor
