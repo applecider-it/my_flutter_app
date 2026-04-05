@@ -43,7 +43,6 @@ class _DevelopmentPageState extends State<DevelopmentPage> {
 
       var e = result['e'];
 
-      // コンソールに表示
       print("通信エラー: $e");
 
       // ユーザーにエラー表示
@@ -126,6 +125,7 @@ class _DevelopmentPageState extends State<DevelopmentPage> {
               decoration: InputDecoration(labelText: "Password"),
             ),
 
+            const SizedBox(height: 20), // 間隔を空ける
             // ログインボタン
             ElevatedButton(
               onPressed: () async {
@@ -134,6 +134,7 @@ class _DevelopmentPageState extends State<DevelopmentPage> {
               child: Text("ログイン"),
             ),
 
+            const SizedBox(height: 100), // 間隔を空ける
             // ログアウトボタン
             ElevatedButton(
               onPressed: () async {

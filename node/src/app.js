@@ -8,7 +8,6 @@ const app = express();
 // これがないと req.body が undefined になる
 app.use(express.json());
 
-// 擬似ログイン
 app.post("/login", login);
 
 export default app;

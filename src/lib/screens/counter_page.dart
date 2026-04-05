@@ -40,9 +40,7 @@ class _CounterPageState extends State<CounterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Counter Page"),
-      ),
+      appBar: AppBar(title: const Text("Counter Page")),
 
       /// メインUI
       body: Center(
@@ -54,39 +52,24 @@ class _CounterPageState extends State<CounterPage> {
             /// カウンターの値を表示
             Text(
               'Count: $count',
-              style: const TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
             ),
 
             const SizedBox(height: 20), // 間隔を空ける
-
             /// ボタンエリア（横並び）
             Row(
               mainAxisAlignment: MainAxisAlignment.center, // 横方向中央揃え
               children: [
                 /// +ボタン
-                ElevatedButton(
-                  onPressed: increment,
-                  child: const Text("＋"),
-                ),
+                ElevatedButton(onPressed: increment, child: const Text("＋")),
 
                 const SizedBox(width: 10), // 間隔を空ける
-
                 /// -ボタン
-                ElevatedButton(
-                  onPressed: decrement,
-                  child: const Text("－"),
-                ),
+                ElevatedButton(onPressed: decrement, child: const Text("－")),
 
                 const SizedBox(width: 10), // 間隔を空ける
-
                 /// Resetボタン
-                ElevatedButton(
-                  onPressed: reset,
-                  child: const Text("Reset"),
-                ),
+                ElevatedButton(onPressed: reset, child: const Text("Reset")),
               ],
             ),
           ],
