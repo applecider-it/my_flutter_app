@@ -13,7 +13,7 @@ node
 
 cd ~/workspace/github/my_flutter_app/node
 
-node index.js
+node ./src/server.js
 
 
 
