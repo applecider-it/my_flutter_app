@@ -122,6 +122,7 @@ Debugモードじゃないと、ホットリロードは効かない
 
 
 
+
 iOS
 
 xcodeでシミュレーター起動
@@ -132,6 +133,9 @@ xcode -> open developer tool -> simulater
 flutter run
 
 android studioみたいなIDE化はできないけど、vscode編集、コマンドでrで反映可能
+
+
+シミュレーター起動後は、Android Studioからも起動可能
 
 -----------------------------------
 
