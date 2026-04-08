@@ -1,12 +1,19 @@
+import { execAuth } from "../services/auth/auth.js";
+
 /** ログイン処理 */
 export const login = (req, res) => {
   const { email, password } = req.body;
+  const userAgent = req.headers['user-agent'];
 
-  if (email === "test@example.com" && password === "1234") {
+  console.log('login', { email, password }, 'userAgent', userAgent)
+
+  const token = execAuth(email, password);
+
+  if (token) {
     // 認証成功の場合
 
     return res.json({
-      token: "dummy_token_123"
+      token: token
     });
   } else {
     // 認証失敗の場合

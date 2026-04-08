@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { login } from './routes/auth.routes.js';
+import { setRoutes } from '../../config/routes.js';
 
 const app = express();
 
@@ -8,6 +8,6 @@ const app = express();
 // これがないと req.body が undefined になる
 app.use(express.json());
 
-app.post("/login", login);
+setRoutes(app);
 
 export default app;

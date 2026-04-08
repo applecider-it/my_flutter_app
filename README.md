@@ -5,9 +5,11 @@
 - カウンター
 - ToDo
 - 擬似ログインと、認証チェック
+- Nodeのダミーサーバー
 
 ## 動作確認済み環境
 
 - Android Studio
+- iOS Simulator
 
 
