@@ -1,5 +1,5 @@
 /** ダミー認証 */
-export const execAuth = (email, password) => {
+export const execAuth = (email: string, password: string) => {
     if (email === "test@example.com" && password === "1234") {
         // 認証成功の場合
 

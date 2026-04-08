@@ -13,7 +13,7 @@ node
 
 cd ~/workspace/github/my_flutter_app/node
 
-node --watch ./src/entrypoints/server.js
+npx tsx watch ./app/entrypoints/server.js
 
 
 

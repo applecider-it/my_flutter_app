@@ -1,7 +1,9 @@
-import { execAuth } from "../services/auth/auth.js";
+import { Request, Response } from 'express';
+
+import { execAuth } from "@/services/auth/auth.js";
 
 /** ログイン処理 */
-export const login = (req, res) => {
+export const login = (req: Request, res: Response) => {
   const { email, password } = req.body;
   const userAgent = req.headers['user-agent'];
 

@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "ignoreDeprecations": "6.0",
+    "rootDir": "./app",
+    "outDir": "./dist",
+    "module": "es2022",
+    "target": "es2022",
+    "types": ["node"],
+    "strict": true,
+    "baseUrl": "./app",
+    "paths": {
+      "@/*": ["*"]
+    },
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+  },
+  "include": [
+    "app/**/*.ts"
+  ]
+}
