@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
@@ -14,9 +15,9 @@ class AuthService {
     try {
       // HOST名
       // Androidエミュレータは、localhostの場合は 10.0.2.2 を使う
-      var host = Platform.isAndroid
-          ? '10.0.2.2:3000'
-          : 'localhost:3000';
+      var host = kIsWeb
+          ? '127.0.0.1:3000' // Webはこっちの方が安定
+          : (Platform.isAndroid ? '10.0.2.2:3000' : 'localhost:3000');
 
       final response = await http.post(
         Uri.parse('http://' + host + '/login'),
@@ -26,10 +27,7 @@ class AuthService {
 
       final decodedJson = jsonDecode(response.body);
 
-      return {
-        'json': decodedJson,
-        'response': response,
-      };
+      return {'json': decodedJson, 'response': response};
     } catch (e) {
       // 通信エラー発生時
 

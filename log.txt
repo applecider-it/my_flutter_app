@@ -12,3 +12,7 @@ npm install -D typescript ts-node @types/node
 npx tsc --init
 
 npm i --save-dev @types/express
+
+npm install cors
+
+npm i --save-dev @types/cors

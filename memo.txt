@@ -137,5 +137,31 @@ android studioみたいなIDE化はできないけど、vscode編集、コマン
 
 シミュレーター起動後は、Android Studioからも起動可能
 
+Android Studioの実行環境選択ドロップダウンからも起動可能
+
+
+
+
+
+web
+
+Android Studio
+
+実行環境をChromeにして起動
+
+ポートを固定
+
+flutter run -d chrome --web-port=5000
+
+ポートを固定しないと、毎回ポートがわかるので、ローカルストレージの取得ができない
+
+Android Studio起動で固定する時
+
+起動ボタンの右の...
+Additional run args
+--web-port=5000
+追加
+この値は、Web専用なので、iOS,android起動時は無視される
+
 -----------------------------------
 
