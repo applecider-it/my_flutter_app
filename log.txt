@@ -16,3 +16,6 @@ npm i --save-dev @types/express
 npm install cors
 
 npm i --save-dev @types/cors
+
+flutter pub get
+
