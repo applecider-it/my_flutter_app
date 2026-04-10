@@ -187,6 +187,18 @@ class _DevelopmentPageState extends State<DevelopmentPage> {
             ),
 
             const SizedBox(height: 10), // 間隔を空ける
+            Container(
+              width: 50,
+              height: 50,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/images/Block.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 10), // 間隔を空ける
             // カメラボタン
             ElevatedButton(
               onPressed: () async {
