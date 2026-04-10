@@ -4,7 +4,7 @@ import 'dart:convert';
 
 import 'home_page.dart';
 
-import '../services/auth/auth_service.dart';
+import '../services/auth/auth_ctrl.dart';
 
 /// 開発者向け画面
 ///
@@ -27,11 +27,11 @@ class _DevelopmentPageState extends State<DevelopmentPage> {
     text: "1234",
   );
 
-  final authService = AuthService();
+  final authCtrl = AuthCtrl();
 
   /// ログイン処理
   Future<void> login() async {
-    final result = await authService.postLogin(
+    final result = await authCtrl.postLogin(
       emailController.text,
       passwordController.text,
     );
@@ -61,7 +61,7 @@ class _DevelopmentPageState extends State<DevelopmentPage> {
 
         final token = result['json']['token'];
 
-        await authService.setToken(token);
+        await authCtrl.setToken(token);
 
         // メッセージ表示
         ScaffoldMessenger.of(
@@ -87,7 +87,7 @@ class _DevelopmentPageState extends State<DevelopmentPage> {
   }
 
   Future<void> logout() async {
-    await authService.clearToken();
+    await authCtrl.clearToken();
 
     // メッセージ表示
     ScaffoldMessenger.of(

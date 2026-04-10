@@ -1,27 +1,25 @@
 import 'dart:convert';
-import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 
-// 認証関連
-class AuthService {
+import 'package:flutter/material.dart';
+
+import '../../screens/home_page.dart';
+
+import '../api/http.dart';
+
+// 認証管理
+class AuthCtrl {
   /// セキュアストレージのインスタンス
   final storage = FlutterSecureStorage();
 
   /// ログインAPI送信
   Future<Map<String, dynamic>> postLogin(String email, String password) async {
     try {
-      // HOST名
-      // Androidエミュレータは、localhostの場合は 10.0.2.2 を使う
-      var host = kIsWeb
-          ? '127.0.0.1:3000' // Webはこっちの方が安定
-          : (Platform.isAndroid ? '10.0.2.2:3000' : 'localhost:3000');
-
       final response = await http.post(
-        Uri.parse('http://' + host + '/login'),
-        headers: {'Content-Type': 'application/json'},
+        Uri.parse(getApiUrl('/login')),
+        headers: getJsonHeaders(),
         body: jsonEncode({'email': email, 'password': password}),
       );
 
@@ -49,5 +47,22 @@ class AuthService {
   Future<bool> checkLogin() async {
     final token = await storage.read(key: "token");
     return token != null;
+  }
+
+  /// ログインチェックとページ遷移
+  Future<void> checkLoginExec(context) async {
+    final isLogin = await checkLogin();
+
+    if (!isLogin) {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => HomePage()),
+      );
+
+      // メッセージ表示
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("ログインが必要です。")));
+    }
   }
 }

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'todo_detail_page.dart';
-import 'home_page.dart';
 
-import '../services/auth/auth_service.dart';
+import '../services/auth/auth_ctrl.dart';
 
 /// Todoメイン画面
 class TodoPage extends StatefulWidget {
@@ -20,7 +19,7 @@ class _TodoPageState extends State<TodoPage> {
   /// テキスト入力コントローラー
   final TextEditingController controller = TextEditingController();
 
-  final authService = AuthService();
+  final authCtrl = AuthCtrl();
 
   @override
   void initState() {
@@ -30,19 +29,7 @@ class _TodoPageState extends State<TodoPage> {
 
   /// ログインチェック
   Future<void> checkLogin() async {
-    final isLogin = await authService.checkLogin();
-
-    if (!isLogin) {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (_) => HomePage()),
-      );
-
-      // メッセージ表示
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(SnackBar(content: Text("ログインが必要です。")));
-    }
+    await authCtrl.checkLoginExec(context);
   }
 
   /// Todo追加処理
