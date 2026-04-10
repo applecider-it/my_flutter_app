@@ -1,20 +1,26 @@
 PODS:
+  - camera_avfoundation (0.0.1):
+    - Flutter
   - Flutter (1.0.0)
   - flutter_secure_storage_darwin (10.0.0):
     - Flutter
     - FlutterMacOS
 
 DEPENDENCIES:
+  - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
   - Flutter (from `Flutter`)
   - flutter_secure_storage_darwin (from `.symlinks/plugins/flutter_secure_storage_darwin/darwin`)
 
 EXTERNAL SOURCES:
+  camera_avfoundation:
+    :path: ".symlinks/plugins/camera_avfoundation/ios"
   Flutter:
     :path: Flutter
   flutter_secure_storage_darwin:
     :path: ".symlinks/plugins/flutter_secure_storage_darwin/darwin"
 
 SPEC CHECKSUMS:
+  camera_avfoundation: 281867ff09f1da66f031a184ecfbc6f2e625c9f5
   Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
   flutter_secure_storage_darwin: 557817588b80e60213cbecb573c45c76b788018d
 
