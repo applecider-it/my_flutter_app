@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'todo_page.dart';
 import 'counter_page.dart';
 import 'development_page.dart';
+import 'auth_page.dart';
 
 /// トップ画面
 class HomePage extends StatelessWidget {
@@ -38,6 +39,18 @@ class HomePage extends StatelessWidget {
                 );
               },
               child: const Text("Counterページへ"),
+            ),
+
+            const SizedBox(height: 20), // 間隔を空ける
+            /// 認証動作確認用画面への遷移ボタン
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AuthPage()),
+                );
+              },
+              child: const Text("Authページへ"),
             ),
 
             const SizedBox(height: 20), // 間隔を空ける
