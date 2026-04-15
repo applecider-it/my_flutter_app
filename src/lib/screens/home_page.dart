@@ -3,6 +3,7 @@ import 'todo_page.dart';
 import 'counter_page.dart';
 import 'development_page.dart';
 import 'auth_page.dart';
+import 'camera_page.dart';
 
 /// トップ画面
 class HomePage extends StatelessWidget {
@@ -18,6 +19,18 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center, // 垂直方向中央揃え
           children: [
+            /// 認証動作確認用画面への遷移ボタン
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => AuthPage()),
+                );
+              },
+              child: const Text("Authページへ"),
+            ),
+
+            const SizedBox(height: 20), // 間隔を空ける
             /// Todoページへの遷移ボタン
             ElevatedButton(
               onPressed: () {
@@ -42,18 +55,18 @@ class HomePage extends StatelessWidget {
             ),
 
             const SizedBox(height: 20), // 間隔を空ける
-            /// 認証動作確認用画面への遷移ボタン
+            /// Cameraページへの遷移ボタン
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => AuthPage()),
+                  MaterialPageRoute(builder: (context) => CameraPage()),
                 );
               },
-              child: const Text("Authページへ"),
+              child: const Text("Cameraページへ"),
             ),
 
-            const SizedBox(height: 20), // 間隔を空ける
+            const SizedBox(height: 40), // 間隔を空ける
             /// 開発者向けページへの遷移ボタン
             ElevatedButton(
               onPressed: () {

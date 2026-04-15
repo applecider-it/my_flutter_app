@@ -107,7 +107,7 @@ class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Development Page")),
+      appBar: AppBar(title: const Text("Auth Page")),
 
       body: Center(
         // Columnで縦に並べる
