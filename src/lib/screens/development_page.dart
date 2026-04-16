@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'home_page.dart';
+
 /// 開発者向け画面
 ///
 /// StatefulWidgetを使って、画面の状態を管理します。
@@ -33,6 +35,37 @@ class _DevelopmentPageState extends State<DevelopmentPage> {
                   fit: BoxFit.cover,
                 ),
               ),
+            ),
+
+            const SizedBox(height: 20), // 間隔を空ける
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text("Navigator pop"),
+            ),
+
+            const SizedBox(height: 20), // 間隔を空ける
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomePage()),
+                );
+              },
+              child: const Text("Navigator push"),
+            ),
+
+            const SizedBox(height: 20), // 間隔を空ける
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (_) => HomePage()),
+                      (route) => false,
+                );
+              },
+              child: const Text("Navigator reset"),
             ),
           ],
         ),
