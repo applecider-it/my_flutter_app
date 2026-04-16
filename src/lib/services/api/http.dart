@@ -15,7 +15,9 @@ String getApiUrl(uri) {
       ? '127.0.0.1:3000' // Webはこっちの方が安定
       : (Platform.isAndroid ? '10.0.2.2:3000' : 'localhost:3000');
 
-  var url = 'http://' + host + uri;
+  var version = 'v1';
+
+  var url = 'http://' + host + '/' + version + uri;
 
   return url;
 }
