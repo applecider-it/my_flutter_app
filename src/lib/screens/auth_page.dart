@@ -70,9 +70,10 @@ class _AuthPageState extends State<AuthPage> {
         ).showSnackBar(SnackBar(content: Text("ログインしました")));
 
         // ホームへ移動
-        Navigator.pushReplacement(
+        Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(builder: (_) => HomePage()),
+          (route) => false,
         );
       } else {
         // ログイン失敗
@@ -96,10 +97,15 @@ class _AuthPageState extends State<AuthPage> {
     ).showSnackBar(SnackBar(content: Text("ログアウトしました")));
 
     // ホームへ移動
-    Navigator.pushReplacement(
+    Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(builder: (_) => HomePage()),
+      (route) => false,
     );
+  }
+
+  Future<bool> checkLogin() async {
+    return await authCtrl.checkLogin();
   }
 
   // UI構築
@@ -108,42 +114,48 @@ class _AuthPageState extends State<AuthPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Auth Page")),
-
       body: Center(
-        // Columnで縦に並べる
-        child: Column(
-          children: [
-            // メールアドレス入力欄
-            TextField(
-              controller: emailController,
-              decoration: InputDecoration(labelText: "Email"),
-            ),
+        child: FutureBuilder<bool>(
+          future: checkLogin(),
+          builder: (context, snapshot) {
+            // ローディング中
+            if (!snapshot.hasData) {
+              return CircularProgressIndicator();
+            }
 
-            // パスワード入力欄
-            TextField(
-              controller: passwordController,
-              obscureText: true, // パスワードを●表示にする
-              decoration: InputDecoration(labelText: "Password"),
-            ),
+            final isLoggedIn = snapshot.data!;
 
-            const SizedBox(height: 10), // 間隔を空ける
-            // ログインボタン
-            ElevatedButton(
-              onPressed: () async {
-                await login();
-              },
-              child: Text("ログイン"),
-            ),
+            if (!isLoggedIn) {
+              // 未ログイン
 
-            const SizedBox(height: 10), // 間隔を空ける
-            // ログアウトボタン
-            ElevatedButton(
-              onPressed: () async {
-                await logout();
-              },
-              child: Text("ログアウト"),
-            ),
-          ],
+              // Columnで縦に並べる
+              return Column(
+                children: [
+                  // メールアドレス入力欄
+                  TextField(
+                    controller: emailController,
+                    decoration: InputDecoration(labelText: "Email"),
+                  ),
+
+                  // パスワード入力欄
+                  TextField(
+                    controller: passwordController,
+                    obscureText: true, // パスワードを●表示にする
+                    decoration: InputDecoration(labelText: "Password"),
+                  ),
+
+                  const SizedBox(height: 10), // 間隔を空ける
+                  // ログインボタン
+                  ElevatedButton(onPressed: login, child: Text("ログイン")),
+                ],
+              );
+            } else {
+              // ログイン済み
+
+              // ログアウトボタン
+              return ElevatedButton(onPressed: logout, child: Text("ログアウト"));
+            }
+          },
         ),
       ),
     );
