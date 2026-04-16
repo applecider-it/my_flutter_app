@@ -62,7 +62,7 @@ class _DevelopmentPageState extends State<DevelopmentPage> {
                 Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (_) => HomePage()),
-                      (route) => false,
+                  (route) => false,
                 );
               },
               child: const Text("Navigator reset"),
