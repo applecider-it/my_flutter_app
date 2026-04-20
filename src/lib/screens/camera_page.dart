@@ -19,8 +19,8 @@ class _CameraPageState extends State<CameraPage> {
   late List<CameraDescription> cameras;
   XFile? imageFile;
 
-  Future<void> execCamera() async {
-    print("execCamera");
+  Future<void> execInitCamera() async {
+    print("execInitCamera");
 
     if (!isCameraInit) {
       WidgetsFlutterBinding.ensureInitialized();
@@ -33,7 +33,20 @@ class _CameraPageState extends State<CameraPage> {
 
       await controller.initialize();
 
-      isCameraInit = true;
+      setState(() {
+        isCameraInit = true;
+      });
+
+      print("カメラ初期化");
+    }
+  }
+
+  Future<void> execTakeCamera() async {
+    print("execTakeCamera");
+
+    if (!isCameraInit) {
+      print("カメラが初期化されていません。");
+      return;
     }
 
     final image = await controller.takePicture();
@@ -68,11 +81,24 @@ class _CameraPageState extends State<CameraPage> {
         child: Column(
           children: [
             // カメラボタン
-            ElevatedButton(
-              onPressed: () async {
-                await execCamera();
-              },
-              child: Text("カメラ起動+撮影"),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center, // 中央寄せ
+              children: [
+                ElevatedButton(
+                  onPressed: () async {
+                    await execInitCamera();
+                  },
+                  child: Text("カメラ起動"),
+                ),
+
+                SizedBox(width: 16), // ボタンの間のスペース
+                ElevatedButton(
+                  onPressed: () async {
+                    await execTakeCamera();
+                  },
+                  child: Text("撮影"),
+                ),
+              ],
             ),
 
             if (isCameraInit)
@@ -83,10 +109,7 @@ class _CameraPageState extends State<CameraPage> {
               ),
 
             if (imageFile != null)
-              Image.file(
-                File(imageFile!.path),
-                height: 200,
-              ),
+              Image.file(File(imageFile!.path), height: 200),
           ],
         ),
       ),
