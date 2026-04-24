@@ -5,7 +5,6 @@
 - カウンター
 - ToDo
 - 擬似ログインと、認証チェック
-- Nodeのダミーサーバー
 - カメラ
 
 ## 動作確認済み環境
@@ -13,4 +12,7 @@
 - Android Studio
 - iOS Simulator
 
+## Nodeのダミーサーバー動作環境
+
+- express
 
