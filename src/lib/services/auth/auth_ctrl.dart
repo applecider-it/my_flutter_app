@@ -54,9 +54,10 @@ class AuthCtrl {
     final isLogin = await checkLogin();
 
     if (!isLogin) {
-      Navigator.pushReplacement(
+      Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (_) => HomePage()),
+            (route) => false,
       );
 
       // メッセージ表示
