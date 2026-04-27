@@ -1,5 +1,5 @@
 
-cd ~/workspace/github/my_flutter_app/src
+cd ~/workspace/github/flutter-test/src
 
 -----------------------------------
 
@@ -18,7 +18,7 @@ node: 3000
 
 node
 
-cd ~/workspace/github/my_flutter_app/node
+cd ~/workspace/github/flutter-test/node
 
 npx tsx watch ./app/entrypoints/server.js
 
@@ -74,7 +74,7 @@ flutter doctor --android-licenses
 
 クリアした後
 
-cd ~/workspace/github/my_flutter_app/src
+cd ~/workspace/github/flutter-test/src
 
 
 web
